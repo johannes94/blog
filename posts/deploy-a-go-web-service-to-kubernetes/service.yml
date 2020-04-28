@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+# Notice that the selector definition is the same as the labels definition for the pods
+  selector:
+    app: go-webservice
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      # use a nodePort here to make the service available outside the cluster
+      nodePort: 30000

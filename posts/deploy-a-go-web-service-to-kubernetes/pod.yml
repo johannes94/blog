@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: go-webservice-pod
+  labels:
+    app: go-webservice
+spec:
+  containers:
+  - name: go-webservice
+    image: go-webservice:1.0.0

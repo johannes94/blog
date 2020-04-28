@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-webservice-deployment
+  labels:
+    app: go-webservice
+spec:
+  # Number of Pods to run for this Deployment
+  replicas: 3
+  selector:
+    matchLabels:
+      app: go-webservice
+  template:
+    # Pod Template Definition 
+    metadata:
+      labels:
+        app: go-webservice
+    spec:
+      containers:
+        - name: go-webservice
+          image: go-webservice:1.0.0
