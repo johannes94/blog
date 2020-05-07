@@ -1,0 +1,13 @@
+# The service will use this file for it's default configuration.
+# Configuration can be changed by changing this file or with
+# environment variables. The variables names are commented after
+# each yaml field. An additional config file with full or partial
+# config can be specified with the env var APP_CONFIG_FILE
+
+name: test # APP_NAME
+port: 8444 # APP_PORT
+db:
+  host: localhost # DB_HOST
+  port: 5432 # DB_PORT
+  user: admin # DB_USER
+  password: 1234 # DB_PASSWORD
