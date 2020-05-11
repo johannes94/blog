@@ -1,9 +1,10 @@
-FROM golang:1.14.2 as buildstage
+FROM golang:alpine as buildstage
 
 COPY ./src /src
 WORKDIR /src
-RUN go build -o ./bin/webservice
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ./bin/webservice
 
-FROM ubuntu:latest
-COPY --from=buildstage /src/bin/webservice /usr/bin/
-ENTRYPOINT [ "/usr/bin/webservice" ]
+FROM scratch
+COPY --from=buildstage /src/bin/webservice /webservice
+
+ENTRYPOINT [ "./webservice" ]
