@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: probe-test-deployment
+  labels:
+    app: probe-test
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: probe-test
+  template:
+    metadata:
+      labels:
+        app: probe-test
+    spec:
+      containers:
+      - name: probe-test
+        image: mjgodocker/probe-test:1.0.0
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 35
+        readinessProbe:
+            exec:
+              command: ["stat", "init.txt"]
