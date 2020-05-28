@@ -31,9 +31,9 @@ func main() {
 
 	start := time.Now()
 
-	orderChan := make(chan *http.Response)
-	paymentChan := make(chan *http.Response)
-	storeChan := make(chan *http.Response)
+	orderChan := make(chan *http.Response, 1)
+	paymentChan := make(chan *http.Response, 1)
+	storeChan := make(chan *http.Response, 1)
 
 	errGrp, _ := errgroup.WithContext(context.Background())
 
@@ -76,7 +76,7 @@ func main() {
 func SendPostAsync(url string, body []byte, rc chan *http.Response) error {
 	response, err := http.Post(url, "application/json", bytes.NewReader(body))
 	if err == nil {
-		go func() { rc <- response }()
+		rc <- response
 	}
 
 	return err
