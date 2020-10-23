@@ -24,7 +24,7 @@ func main() {
 	usersR.Path("").Methods(http.MethodGet).HandlerFunc(getAllUsers)
 	usersR.Path("").Methods(http.MethodPost).HandlerFunc(createUser)
 	usersR.Path("/{id}").Methods(http.MethodGet).HandlerFunc(getUserByID)
-	usersR.Path("/{id}").Methods(http.MethodPut).HandlerFunc(uptdateUser)
+	usersR.Path("/{id}").Methods(http.MethodPut).HandlerFunc(updateUser)
 	usersR.Path("/{id}").Methods(http.MethodDelete).HandlerFunc(deleteUser)
 
 	fmt.Println("Start listening")
@@ -56,7 +56,7 @@ func getUserByID(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func uptdateUser(w http.ResponseWriter, r *http.Request) {
+func updateUser(w http.ResponseWriter, r *http.Request) {
 	id := mux.Vars(r)["id"]
 	index := indexByID(users, id)
 	if index < 0 {
