@@ -1,9 +1,9 @@
-module github.com/johannes94/posts/crud-rest-api-with-gorilla-mux/initial
+module github.com/johannes94/blog/posts/crud-rest-api-with-gorilla-mux/sqldb
 
 go 1.14
 
 require (
 	github.com/gorilla/mux v1.8.0
-	gorm.io/driver/postgres v1.0.5 // indirect
-	gorm.io/gorm v1.20.5
+	gorm.io/driver/postgres v1.1.0
+	gorm.io/gorm v1.21.10
 )
