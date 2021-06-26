@@ -1,4 +1,4 @@
-module github.com/johannes94/posts/crud-rest-api-with-gorilla-mux/initial
+module github.com/johannes94/blog/posts/crud-rest-api-with-gorilla-mux/initial
 
 go 1.14
 

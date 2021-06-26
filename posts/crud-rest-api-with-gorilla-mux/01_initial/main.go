@@ -36,7 +36,7 @@ func getAllUsers(w http.ResponseWriter, r *http.Request) {
 
 	if err := json.NewEncoder(w).Encode(users); err != nil {
 		fmt.Println(err)
-		w.WriteHeader(http.StatusInternalServerError)
+		http.Error(w, "Error encoding response object", http.StatusInternalServerError)
 	}
 }
 
@@ -45,14 +45,14 @@ func getUserByID(w http.ResponseWriter, r *http.Request) {
 	index := indexByID(users, id)
 
 	if index < 0 {
-		w.WriteHeader(http.StatusNotFound)
+		http.Error(w, "User not found", http.StatusNotFound)
 		return
 	}
 
 	w.Header().Add("Content-Type", "application/json")
 	if err := json.NewEncoder(w).Encode(users[index]); err != nil {
 		fmt.Println(err)
-		w.WriteHeader(http.StatusInternalServerError)
+		http.Error(w, "Error encoding response object", http.StatusInternalServerError)
 	}
 }
 
@@ -60,13 +60,14 @@ func updateUser(w http.ResponseWriter, r *http.Request) {
 	id := mux.Vars(r)["id"]
 	index := indexByID(users, id)
 	if index < 0 {
-		w.WriteHeader(http.StatusNotFound)
+		http.Error(w, "User not found", http.StatusNotFound)
 		return
 	}
 
 	u := User{}
 	if err := json.NewDecoder(r.Body).Decode(&u); err != nil {
-		w.WriteHeader(http.StatusBadRequest)
+		fmt.Println(err)
+		http.Error(w, "Error decoidng response object", http.StatusBadRequest)
 		return
 	}
 
@@ -75,7 +76,7 @@ func updateUser(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("Content-Type", "application/json")
 	if err := json.NewEncoder(w).Encode(&u); err != nil {
 		fmt.Println(err)
-		w.WriteHeader(http.StatusInternalServerError)
+		http.Error(w, "Error encoding response object", http.StatusInternalServerError)
 	}
 }
 
@@ -83,7 +84,7 @@ func deleteUser(w http.ResponseWriter, r *http.Request) {
 	id := mux.Vars(r)["id"]
 	index := indexByID(users, id)
 	if index < 0 {
-		w.WriteHeader(http.StatusNotFound)
+		http.Error(w, "User not found", http.StatusNotFound)
 		return
 	}
 
@@ -95,7 +96,8 @@ func createUser(w http.ResponseWriter, r *http.Request) {
 	u := User{}
 
 	if err := json.NewDecoder(r.Body).Decode(&u); err != nil {
-		w.WriteHeader(http.StatusBadRequest)
+		fmt.Println(err)
+		http.Error(w, "Error decoidng response object", http.StatusBadRequest)
 		return
 	}
 
@@ -104,7 +106,7 @@ func createUser(w http.ResponseWriter, r *http.Request) {
 	response, err := json.Marshal(&u)
 	if err != nil {
 		fmt.Println(err)
-		w.WriteHeader(http.StatusInternalServerError)
+		http.Error(w, "Error encoding response object", http.StatusInternalServerError)
 		return
 	}
 
