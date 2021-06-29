@@ -6,6 +6,6 @@ This folder holds the code for the Blog Post Series on CRUD REST API in Go at ht
 
 | Blogpost      | Folder           
 | ------------- |:-------------:|
-| col 3 is      | right-aligned |
-| col 2 is      | centered      |
-| zebra stripes | are neat      |
+| https://mj-go.in/golang/crud-rest-api-with-gorilla-mux     | 01_initial |
+| https://mj-go.in/golang/rest-api-with-sql-db-in-go     | 02_sql_db      |
+| go-rest-api-sorting-paging-and-filtering | 03_sorting_pagining_filter    |
