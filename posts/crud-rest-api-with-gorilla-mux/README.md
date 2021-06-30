@@ -8,4 +8,4 @@ This folder holds the code for the Blog Post Series on CRUD REST API in Go at ht
 | ------------- |:-------------:|
 | https://mj-go.in/golang/crud-rest-api-with-gorilla-mux     | 01_initial |
 | https://mj-go.in/golang/rest-api-with-sql-db-in-go     | 02_sql_db      |
-| https://mj-go.in/golang/go-rest-api-sorting-paging-and-filtering | 03_sorting_pagining_filter    |
+| https://mj-go.in/golang/go-rest-api-sort-page-and-filter | 03_sorting_pagining_filter    |
