@@ -13,6 +13,7 @@ import (
 	"strings"
 
 	"github.com/gorilla/mux"
+	"github.com/johannes94/blog/posts/crud-rest-api-with-gorilla-mux/middleware/util"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -93,7 +94,7 @@ func main() {
 	usersR.Path("/{id}").Methods(http.MethodDelete).HandlerFunc(uh.deleteUser)
 
 	fmt.Println("Start listening")
-	fmt.Println(http.ListenAndServe(":8080", r))
+	fmt.Println(http.ListenAndServe(":8080", util.LogMiddleware(r)))
 }
 
 func initDB() (*gorm.DB, error) {
