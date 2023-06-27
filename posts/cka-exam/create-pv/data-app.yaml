@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: data-app
+  name: data-app
+  namespace: moon
+spec:
+  containers:
+  - image: nginx:1.25.1
+    name: data-app
+    resources: {}
+    volumeMounts:
+      - mountPath: /var/data
+        name: data-volume
+  volumes:
+    - name: data-volume
+      persistentVolumeClaim:
+        claimName: data-pvc
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
