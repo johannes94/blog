@@ -1,2 +1,2 @@
 # Code for init Functions in Go
-Code for blog post https://mj-go.in/golang/init-functions-in-go
+Code for blog post https://go-cloud-native.com/golang/init-functions-in-go

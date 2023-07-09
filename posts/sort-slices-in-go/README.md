@@ -1,2 +1,2 @@
 # Code for Sort Slices in Go
-Code for Blog post https://mj-go.in/golang/sort-slices-in-go
+Code for Blog post https://go-cloud-native.com/golang/sort-slices-in-go
