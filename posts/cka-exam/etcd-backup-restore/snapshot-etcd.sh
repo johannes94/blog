@@ -1,0 +1,1 @@
+etcdctl snapshot save snapshot.db
