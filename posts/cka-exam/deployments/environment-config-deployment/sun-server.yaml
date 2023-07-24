@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: sun-server
+  name: sun-server
+  namespace: sun
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sun-server
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: sun-server
+    spec:
+      containers:
+      - image: nginx:1.25.1
+        name: nginx
+        resources: {}
+status: {}

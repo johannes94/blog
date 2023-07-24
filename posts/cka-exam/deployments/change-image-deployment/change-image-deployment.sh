@@ -1,0 +1,1 @@
+kubectl set image -n saturn deploy saturn-server nginx=nginx:1.25.1

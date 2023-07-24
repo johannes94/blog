@@ -1,0 +1,1 @@
+kubectl create deploy uranus-server -n uranus -o yaml --dry-run=client --image nginx:1.25.1 > uranus-server.yaml

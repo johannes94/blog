@@ -1,0 +1,1 @@
+kubectl create deploy sun-server -n sun -o yaml --dry-run=client --image nginx:1.25.1 > sun-server.yaml

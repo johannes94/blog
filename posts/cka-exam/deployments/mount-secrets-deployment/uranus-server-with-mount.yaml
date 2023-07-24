@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: uranus-server
+  name: uranus-server
+  namespace: uranus
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: uranus-server
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: uranus-server
+    spec:
+      containers:
+      - image: nginx:1.25.1
+        name: nginx
+        resources: {}
+        volumeMounts:
+          - mountPath: /var/db-user
+            name: db-user
+      volumes:
+        - name: db-user
+          secret:
+            secretName: db-user
+status: {}

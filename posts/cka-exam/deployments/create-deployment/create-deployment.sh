@@ -1,0 +1,1 @@
+kubectl create deploy moon-server --replicas 3 --image nginx:1.25.1 -n moon
